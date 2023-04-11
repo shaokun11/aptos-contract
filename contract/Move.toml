@@ -1,0 +1,11 @@
+[package]
+name = "hello_blockchain"
+version = "1.0.0"
+
+[addresses] 
+hello_blockchain = "0x7303c7be99358909efb9f0bca5c578a6c6d5a30fca688e97da30594c4926a95a" # specify addresses of deployed smart contracts
+
+[dependencies.AptosFramework]  #  declare dependencies on external packages
+git = "https://github.com/aptos-labs/aptos-core.git"# aptos-core package location
+rev = "mainnet"                                     # branch or commit ID of aptos-core
+subdir = "aptos-move/framework/aptos-framework"     # relative directory for aptos-framework package
