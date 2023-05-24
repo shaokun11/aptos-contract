@@ -4,7 +4,7 @@ const axios = require("axios");
 const HexString = aptos.HexString;
 const shellJs = require("shelljs");
 const toml = require("@iarna/toml");
-const NODE_URL = "https://submove-fuji.bbd.sh/v1";
+const NODE_URL = "https://submovet.bbd.sh/v1";
 
 // Update the `Move.toml` file with the new address value
 function updateConfig(addr) {
@@ -65,7 +65,7 @@ async function start() {
   payload = {
     function: address + "::hello::set_message",
     type_arguments: [],
-    arguments: ["hello move"],
+    arguments: ["hello move , now is " + Date.now()],
   };
   const txnRequest = await client.generateTransaction(
     account.address(),

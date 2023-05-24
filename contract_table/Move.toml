@@ -1,9 +1,9 @@
 [package]
-name = "hello_blockchain"
+name = "friends"
 version = "1.0.0"
 
 [addresses]
-hello_blockchain = "0x81899d5bc812a0682fe9274638a2091575e2fd69392756adc0fe3be696ffddf6"
+friends = "0x44977ccdbdfb32fd0c0361417b721ea890ada2dd217e3dd0956ee0a16af0331f"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-core.git"

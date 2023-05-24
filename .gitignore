@@ -1,2 +1,4 @@
 contract/build
+contract_table/build
 node_modules
+acc.txt
