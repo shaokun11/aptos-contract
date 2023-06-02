@@ -1,6 +1,6 @@
 const aptos = require("aptos");
 const fs = require("fs");
-const NODE_URL = "http://127.0.0.1:3002/v1/";
+const NODE_URL = "http://127.0.0.1:3001/v1/";
 const readline = require("readline");
 const axios = require("axios");
 const rand_acc_file_name = "acc.txt";
@@ -42,18 +42,19 @@ function exeAccTransfer() {
       for (let i = 0; i < arr.length - 1; i += 1) {
         transfer(arr[i].privateKeyHex, arr[i + 1].address);
         const ts = _.random(2, 5);
-        await new Promise((r) => setTimeout(r, ts * 1000));
+        await new Promise((r) => setTimeout(r, 0.1 * 1000));
+        console.log("send i is ", i);
       }
     }
   });
 }
 
 async function batchCreateAcc() {
-  for (let index = 0; index < 2000; index++) {
+  for (let index = 0; index < 20000; index++) {
     await createAccount();
   }
 }
-
+batchCreateAcc();
 // batchCreateAcc().then(exeAccTransfer);
 // exeAccTransfer();
 
