@@ -3,7 +3,7 @@ name = "hello_blockchain"
 version = "1.0.0"
 
 [addresses]
-hello_blockchain = "0x81899d5bc812a0682fe9274638a2091575e2fd69392756adc0fe3be696ffddf6"
+hello_blockchain = "0xb3e5e9d58797efbce688894c9aebf09afb074d9c03201b452bc81e8afcd4a75d"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-core.git"

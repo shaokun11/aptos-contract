@@ -23,8 +23,12 @@ async function createAccount() {
     console.log(info.address, " amount is ", amount);
     if (amount > 0) {
       fs.appendFileSync(rand_acc_file_name, JSON.stringify(info) + "\n");
+    } else {
+      await new Promise((r) => setTimeout(r, 5 * 1000));
     }
-  } catch (error) {}
+  } catch (error) {
+    await new Promise((r) => setTimeout(r, 5 * 1000));
+  }
 }
 
 function exeAccTransfer() {
