@@ -5,7 +5,14 @@ const HexString = aptos.HexString;
 const shellJs = require("shelljs");
 const toml = require("@iarna/toml");
 // const NODE_URL = "https://submovet.bbd.sh/v1";
-const NODE_URL = "https://seed-node1.movementlabs.xyz/v1";
+const NODE_URL = "https://seed-node.movementlabs.xyz/v1";
+const normal_account = {
+  address: "0xb3e5e9d58797efbce688894c9aebf09afb074d9c03201b452bc81e8afcd4a75d",
+  publicKeyHex:
+    "0xd91cd0f918bcf87fa5b1969dbe21af5973de6abbc1eced010f866e4a19dbeeca",
+  privateKeyHex:
+    "0xf238ff22567c56bdaa18105f229ac0dacc2d9f73dfc5bf08a2a2a4a0fac4d222",
+};
 
 // Update the `Move.toml` file with the new address value
 function updateConfig(addr) {
@@ -20,16 +27,14 @@ function updateConfig(addr) {
 // Call the `start` function when the script is executed
 start();
 
-// {
-//   address: '0xb3e5e9d58797efbce688894c9aebf09afb074d9c03201b452bc81e8afcd4a75d',
-//   publicKeyHex: '0xd91cd0f918bcf87fa5b1969dbe21af5973de6abbc1eced010f866e4a19dbeeca',
-//   privateKeyHex: '0xf238ff22567c56bdaa18105f229ac0dacc2d9f73dfc5bf08a2a2a4a0fac4d222'
-// }
-
 async function start() {
   const client = new aptos.AptosClient(NODE_URL);
   // Create a new account
-  const account = new aptos.AptosAccount();
+  // const account = new aptos.AptosAccount();
+  const account = aptos.AptosAccount.fromAptosAccountObject({
+    privateKeyHex: normal_account.privateKeyHex,
+  });
+
   console.log(account.toPrivateKeyObject());
   // Get the hexadecimal representation of the account's address
   let address = account.address().hexString;
@@ -90,5 +95,3 @@ async function start() {
   msg = await client.view(payload);
   console.log("new message", msg[0]);
 }
-
-
