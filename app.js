@@ -5,7 +5,7 @@ const HexString = aptos.HexString;
 const shellJs = require("shelljs");
 const toml = require("@iarna/toml");
 // const NODE_URL = "https://submovet.bbd.sh/v1";
-const NODE_URL = "https://seed-node.movementlabs.xyz/v1";
+const NODE_URL = "https://seed-node1.movementlabs.xyz/v1";
 const normal_account = {
   address: "0xb3e5e9d58797efbce688894c9aebf09afb074d9c03201b452bc81e8afcd4a75d",
   publicKeyHex:
@@ -14,7 +14,7 @@ const normal_account = {
     "0xf238ff22567c56bdaa18105f229ac0dacc2d9f73dfc5bf08a2a2a4a0fac4d222",
 };
 
-// Update the `Move.toml` file with the new address value
+// Update the `Move.toml` file with the new address value2
 function updateConfig(addr) {
   let filePath = "contract/Move.toml";
   let configFile = fs.readFileSync(filePath, "utf-8");
@@ -25,9 +25,9 @@ function updateConfig(addr) {
 }
 
 // Call the `start` function when the script is executed
-start();
+deploy();
 
-async function start() {
+async function deploy() {
   const client = new aptos.AptosClient(NODE_URL);
   // Create a new account
   // const account = new aptos.AptosAccount();
@@ -46,7 +46,7 @@ async function start() {
     url: NODE_URL + "/mint?pub_key=" + account.pubKey(),
   });
   // Compile the contract
-  shellJs.exec("aptos move compile --package-dir contract --save-metadata");
+  // shellJs.exec("aptos move compile --package-dir contract --save-metadata");
   // Load the contract
   const packageMetadata = fs.readFileSync(
     "contract/build/hello_blockchain/package-metadata.bcs"
@@ -94,4 +94,13 @@ async function start() {
   };
   msg = await client.view(payload);
   console.log("new message", msg[0]);
+}
+
+
+function readContract(){
+  let payload = {
+    function: address + "::hello::get_message",
+    type_arguments: [],
+    arguments: [address],
+  };
 }
