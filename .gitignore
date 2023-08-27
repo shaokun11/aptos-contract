@@ -2,3 +2,8 @@ contract/build
 contract_table/build
 node_modules
 acc.txt
+contract_add/build
+contract_counter/build
+contract_native/build
+contract_table/build
+contract_yul/build

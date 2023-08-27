@@ -1,0 +1,11 @@
+[package]
+name = "demo108"
+version = "1.0.0"
+
+[addresses]
+self = "0xa272d39841bac0be1e8a8f5f4ab3185be67527cd7f5d8f3973df6140961299f9"
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-core.git"
+rev = "6c48e2d56573282ae9835829a774e691f5c1c663"
+subdir = "aptos-move/framework/aptos-framework"

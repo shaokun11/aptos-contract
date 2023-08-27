@@ -1,11 +1,12 @@
-const aptos = require("aptos");
+const Movement = require("movement-sdk");
 const fs = require("fs");
 const axios = require("axios");
+let aptos = Movement;
 const HexString = aptos.HexString;
 const shellJs = require("shelljs");
 const toml = require("@iarna/toml");
 // const NODE_URL = "https://submovet.bbd.sh/v1";
-const NODE_URL = "https://seed-node1.movementlabs.xyz/v1";
+const NODE_URL = "https://seed-node1.movementlabs.xyz";
 const normal_account = {
   address: "0xb3e5e9d58797efbce688894c9aebf09afb074d9c03201b452bc81e8afcd4a75d",
   publicKeyHex:
@@ -25,7 +26,15 @@ function updateConfig(addr) {
 }
 
 // Call the `start` function when the script is executed
-deploy();
+// deploy();
+
+getLegerInfo()
+async function getLegerInfo(){
+  const client = new aptos.AptosClient(NODE_URL);
+  let info = await client.getLedgerInfo();
+  console.log(info);
+}
+
 
 async function deploy() {
   const client = new aptos.AptosClient(NODE_URL);
