@@ -56,10 +56,10 @@ async function deploy() {
     await client.waitForTransaction(transactionRes.hash);
 
     msg = await client.view({
-        function: address + "::counter::call",
+        function: address + "::counter::view",
         type_arguments: [],
         arguments: [
-           "0x30f3f0db000000000000000000000000000000000000000000000000000000000000000a"
+           "0x06661abd"
         ],
     });
     console.log("counter::call :", msg[0]);
