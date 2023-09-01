@@ -3,7 +3,7 @@ name = "demo"
 version = "1.0.0"
 
 [addresses]
-self = "0x574a3d9f27ff53549c9551d90344bb5b592e1aa7d5a11ae5ebdcb30fdb31a204"
+self = "0x3c07159ac67e43f7b2b326dd41d3d457530ceb4c661eaf49e3b1c88ae457ee39"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-core.git"

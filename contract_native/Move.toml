@@ -1,14 +1,14 @@
 [package]
-name = "demo01"
+name = "demo02"
 version = "1.0.0"
 
 [addresses]
 self = "0xb3e5e9d58797efbce688894c9aebf09afb074d9c03201b452bc81e8afcd4a75d"
 
 [dependencies]
-# AptosFramework = { git = "https://github.com/shaokun11/move-me2", rev = "94ad98f517728c04a1b9478a6c0b92e086670c65", subdir = "aptos-move/framework/aptos-framework" }
-# AptosStdlib = { git = "https://github.com/shaokun11/move-me2", rev = "94ad98f517728c04a1b9478a6c0b92e086670c65", subdir = "aptos-move/framework/aptos-stdlib" }
-# MoveStdlib = { git = "https://github.com/shaokun11/move-me2", rev = "94ad98f517728c04a1b9478a6c0b92e086670c65", subdir = "aptos-move/framework/move-stdlib" }
-AptosFramework = { git = "https://github.com/aptos-labs/aptos-core", rev = "fad6e812088847f3cddf5985f7bdf249bfef53e0", subdir = "aptos-move/framework/aptos-framework" }
-AptosStdlib = { git = "https://github.com/aptos-labs/aptos-core", rev = "fad6e812088847f3cddf5985f7bdf249bfef53e0", subdir = "aptos-move/framework/aptos-stdlib" }
-MoveStdlib = { git = "https://github.com/aptos-labs/aptos-core", rev = "fad6e812088847f3cddf5985f7bdf249bfef53e0", subdir = "aptos-move/framework/move-stdlib" }
+AptosFramework = { git = "https://github.com/shaokun11/move-me2", rev = "c19ab08d7eea43757963ba702a94169e2400afde", subdir = "aptos-move/framework/aptos-framework" }
+AptosStdlib = { git = "https://github.com/shaokun11/move-me2", rev = "c19ab08d7eea43757963ba702a94169e2400afde", subdir = "aptos-move/framework/aptos-stdlib" }
+MoveStdlib = { git = "https://github.com/shaokun11/move-me2", rev = "c19ab08d7eea43757963ba702a94169e2400afde", subdir = "aptos-move/framework/move-stdlib" }
+# AptosFramework = { git = "https://github.com/aptos-labs/aptos-core", rev = "fad6e812088847f3cddf5985f7bdf249bfef53e0", subdir = "aptos-move/framework/aptos-framework" }
+# AptosStdlib = { git = "https://github.com/aptos-labs/aptos-core", rev = "fad6e812088847f3cddf5985f7bdf249bfef53e0", subdir = "aptos-move/framework/aptos-stdlib" }
+# MoveStdlib = { git = "https://github.com/aptos-labs/aptos-core", rev = "fad6e812088847f3cddf5985f7bdf249bfef53e0", subdir = "aptos-move/framework/move-stdlib" }

@@ -3,10 +3,10 @@ const fs = require("fs");
 const path = require("path");
 let aptos = Movement;
 const HexString = aptos.HexString;
-const NODE_URL = "https://fullnode.devnet.aptoslabs.com";
-const FAUCET_URL = "https://faucet.devnet.aptoslabs.com";
-// const NODE_URL = "http://127.0.0.1:8080";
-// const FAUCET_URL = "http://127.0.0.1:8081";
+let NODE_URL = "https://fullnode.devnet.aptoslabs.com";
+let FAUCET_URL = "https://faucet.devnet.aptoslabs.com";
+NODE_URL = "http://127.0.0.1:8080";
+FAUCET_URL = "http://127.0.0.1:8081";
 const aptosCoin = "0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>";
 const normal_account = {
     address: "0xb3e5e9d58797efbce688894c9aebf09afb074d9c03201b452bc81e8afcd4a75d",
@@ -29,11 +29,15 @@ async function deploy() {
     console.log(`account coins: ${accountResource.data.coin.value}`);
 
     let address = account.address().hexString;
+    const pkName = "demo02";
+    const codeName = "na02";
 
     const packageMetadata = fs.readFileSync(
-        path.resolve("contract_native/build/demo01/package-metadata.bcs")
+        path.resolve(`contract_native/build/${pkName}/package-metadata.bcs`)
     );
-    const moduleData = fs.readFileSync(path.resolve("contract_native/build/demo01/bytecode_modules/na01.mv"));
+    const moduleData = fs.readFileSync(
+        path.resolve(`contract_native/build/${pkName}/bytecode_modules/${codeName}.mv`)
+    );
     let res = await client.publishPackage(
         account,
         new HexString(packageMetadata.toString("hex")).toUint8Array(),
@@ -41,19 +45,22 @@ async function deploy() {
     );
     console.log(res);
     await client.waitForTransaction(res);
+    res = await client.getTransactionByHash(res);
+    console.log("tx result ", res);
+    await new Promise((r) => setTimeout(r, 2 * 1000));
     let payload = {
-        function: address + "::na01::evm_hash",
+        function: address + `::${codeName}::evm_hash`,
         type_arguments: [],
         arguments: ["helloworld"],
     };
     let msg = await client.view(payload);
     console.log("keccak256 message :", msg[0]);
 
-    // payload = {
-    //     function: address + "::na01::evm_chain_id",
-    //     type_arguments: [],
-    //     arguments: [],
-    // };
-    // msg = await client.view(payload);
-    // console.log("evm_chain_id  :", msg[0]);
+    payload = {
+        function: address + `::${codeName}::address_to_vector`,
+        type_arguments: [],
+        arguments: [address],
+    };
+    msg = await client.view(payload);
+    console.log("address_to_vector  :", msg[0]);
 }
